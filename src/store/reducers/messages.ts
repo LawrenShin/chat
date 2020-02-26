@@ -1,21 +1,24 @@
-import { Action } from 'redux';
-import { Message } from '../../types/messages';
+import { ADD_MESSAGE, MESSAGE_RECEIVED, Message, MessageActionsTypes } from "../../types/messages";
 
-interface MessagesState {
-    messages: Message[];
-}
+const initialState = [{
+    id: 0,
+    when: new Date(),
+    author: 'system',
+    message: 'Start typing pls',
+}];
 
-const initialState = {
-    messages: [{
-        id: 0,
-        when: new Date(),
-        author: 'system',
-        message: 'Start typing pls',
-    }]
-};
+const messagesInitialState: Message[] = initialState;
 
-const messagesReducer = (state = initialState, action: Action):MessagesState => {
+const messagesReducer = (state = messagesInitialState, action: MessageActionsTypes): Message[] => {
+    const { type } = action;
 
+    if(type === ADD_MESSAGE){
+        return state;
+    }
+
+    if(type === MESSAGE_RECEIVED){
+        return [ ...state, { ...action.message } ];
+    }
 
     return state;
 };
