@@ -1,16 +1,12 @@
-import { Message } from '../../types';
+import { Message } from '../../types/messages';
+import { AppActions } from '../../types';
 
-export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED';
-export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const addMessage = (message: Message): AppActions => ({
+   type: 'ADD_MESSAGE',
+   message
+});
 
-export interface AddMessageAction {
-    type: typeof ADD_MESSAGE;
-    message: Message;
-}
-
-export interface MessageRecievedAction {
-    type: typeof MESSAGE_RECEIVED;
-    message: Message;
-}
-
-export type MessageActionsTypes = AddMessageAction | MessageRecievedAction;
+export const messageRecieved = (message: Message): AppActions => ({
+    type: 'MESSAGE_RECEIVED',
+    message
+});

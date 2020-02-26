@@ -1,7 +1,7 @@
-export interface Message {
-    id: number;
-    message: string;
-    when: Date;
-    author: string;
-    path?: string;
-}
+import { MessageActionsTypes } from './messages';
+import { SystemActionTypes } from './system';
+import { UserActionTypes } from './users';
+
+export type AppActions = MessageActionsTypes 
+| SystemActionTypes 
+| UserActionTypes;

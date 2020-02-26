@@ -1,33 +1,22 @@
-export const ADD_USER = 'ADD_USER';
-export const APPLY_USER = 'APPLY_USER';
-export const REMOVE_USER = 'REMOVE_USER';
-export const UPDATE_USERS = 'UPDATE_USERS';
+import {AppActions} from '../../types';
+import {ApplyUserObject, UPDATE_USERS, User} from '../../types/users';
 
-export interface AddUserAction {
-    type: typeof ADD_USER;
-    name: string;
-}
+export const addUser = (name: string): AppActions => ({
+    type: 'ADD_USER',
+    name,
+});
 
-export interface RemoveUserAction {
-    type: typeof REMOVE_USER;
-    name: string;
-}
+export const removeUser = (name: string): AppActions => ({
+    type: 'REMOVE_USER',
+    name,
+});
 
-interface ApplyUserObject {
-    userName: string;
-    roomId: null | number;
-}
-export interface ApplyUserAction {
-    type: typeof APPLY_USER;
-    payload: ApplyUserObject;
-}
+export const applyUser = (obj: ApplyUserObject): AppActions => ({
+    type: 'APPLY_USER',
+    payload: obj,
+});
 
-interface User {
-    name: string;
-}
-export interface UpdateUsersAction {
-    type: typeof UPDATE_USERS;
-    payload: User[];
-}
-
-export type UserActionTypes = AddUserAction | RemoveUserAction | ApplyUserAction | UpdateUsersAction;
+export const updateUsers = (arr: User[]): AppActions => ({
+   type: 'UPDATE_USERS',
+   payload: arr,
+});
