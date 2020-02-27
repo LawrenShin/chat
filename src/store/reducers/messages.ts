@@ -10,13 +10,11 @@ const initialState = [{
 const messagesInitialState: Message[] = initialState;
 
 const messagesReducer = (state = messagesInitialState, action: MessageActionsTypes): Message[] => {
-    const { type } = action;
-
-    if(type === ADD_MESSAGE){
+    if(action.type === ADD_MESSAGE){
         return state;
     }
 
-    if(type === MESSAGE_RECEIVED){
+    if(action.type === MESSAGE_RECEIVED){
         return [ ...state, { ...action.message } ];
     }
 

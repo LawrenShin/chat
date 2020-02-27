@@ -1,22 +1,21 @@
-import {AppActions} from '../../types';
-import {ApplyUserObject, UPDATE_USERS, User} from '../../types/users';
+import {ApplyUserObject, User, ActionType, AddUserAction, RemoveUserAction, ApplyUserAction, UpdateUsersAction} from '../../types/users';
 
-export const addUser = (name: string): AppActions => ({
-    type: 'ADD_USER',
+export const addUser = (name: string): AddUserAction => ({
+    type: ActionType.ADD_USER,
     name,
 });
 
-export const removeUser = (name: string): AppActions => ({
-    type: 'REMOVE_USER',
+export const removeUser = (name: string): RemoveUserAction => ({
+    type: ActionType.REMOVE_USER,
     name,
 });
 
-export const applyUser = (obj: ApplyUserObject): AppActions => ({
-    type: 'APPLY_USER',
+export const applyUser = (obj: ApplyUserObject): ApplyUserAction => ({
+    type: ActionType.APPLY_USER,
     payload: obj,
 });
 
-export const updateUsers = (arr: User[]): AppActions => ({
-   type: 'UPDATE_USERS',
+export const updateUsers = (arr: User[]): UpdateUsersAction => ({
+   type: ActionType.UPDATE_USERS,
    payload: arr,
 });
